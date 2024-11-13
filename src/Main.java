@@ -9,33 +9,11 @@ public class Main {
         Employee nhanvienf = new PartTimeEmployee(1, "HoangH", 16, 185, "HoangH@", 70);
         Employee nhanvieng = new PartTimeEmployee(2, "HoangU", 17, 175, "HoangU@", 74);
 
-        double totalWage = 0;
-        double averageWage = 0;
-        Employee[] employees = {nhanviena, nhanvienb, nhanvienc, nhanviend, nhanviene, nhanvienf, nhanvieng};
-        for (Employee employee : employees) {
-            totalWage += employee.getWage();
-        }
-        averageWage = totalWage / employees.length;
-        System.out.println("Average wage is: " + (long) averageWage);
+        Employee[] employee ={nhanviena, nhanvienb, nhanvienc, nhanviend, nhanviene, nhanvienf, nhanvieng};
+        EmployeeList employeeList = new EmployeeList(employee);
 
-        int count = 0;
-        for (Employee employee : employees) {
-            if (employee instanceof FullTimeEmployee) {
-                FullTimeEmployee fullTimeEmployee = (FullTimeEmployee) employee;
-                if (fullTimeEmployee.getWage() < averageWage) {
-                    count++;
-                }
-            }
-        }
-        System.out.println("Number of employees with lower than average wage : " + count);
-
-        double totalPartTimeWage = 0;
-        for (Employee employee : employees) {
-            if (employee instanceof PartTimeEmployee) {
-                PartTimeEmployee partTimeEmployee = (PartTimeEmployee) employee;
-                totalPartTimeWage += partTimeEmployee.getWage();
-            }
-        }
-        System.out.println("Total part time wage is: " + (long) totalPartTimeWage);
+        System.out.println("Average wage is: " + (long) employeeList.getAverageWage());
+        System.out.println("Number of employees with lower than average wage : " + employeeList.getCouldBeLowWage());
+        System.out.println("Total part time wage is: " + (long) employeeList.getTotalPartTimeWage());
     }
 }
